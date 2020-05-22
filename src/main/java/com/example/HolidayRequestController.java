@@ -26,10 +26,8 @@ public class HolidayRequestController {
 
     @Autowired
     private HolidayRequestRepo holidayRequestRepo;
-
     @Autowired
     private UserRepo userRepo;
-
     @Autowired
     private RuntimeService runtimeService;
     @Autowired
@@ -46,9 +44,9 @@ public class HolidayRequestController {
     HashMap<String, Object> variables = new HashMap<>();
     HolidayRequest holidayRequest = null;
 
-    @GetMapping("/index")
-    String sayHello(){
-        return "Hello World";
+    @GetMapping("/index.html")
+    String indexpage(){
+        return "index";
     }
 
     //Creates HolidayRequest, saves it to DB and starts new ProcessInstance of "Urlaubsantrag"
@@ -93,11 +91,16 @@ public class HolidayRequestController {
         return taskString;
     }
 
-    //Assigning holidayrequests
-    @PostMapping(value = "/HolidayRequest/{id}/assign", consumes ={"application/json"},produces = {"application/json"})
-    String claimTask(@RequestBody() User user , @PathVariable("id") long id){
+    //Creating user
+    @PostMapping(value = "/User/create", consumes ={"application/json"},produces = {"application/json"})
+    String createUser(@RequestBody() User user){
         userRepo.save(user);
+        return "User created";
+    }
 
+    //Assigning holidayrequests
+    @PostMapping(value = "/HolidayRequest/{id}/assign", consumes ={"application/json"},produces = {"application/json"}) //TODO: User anlegen speerat
+    String claimTask(@RequestBody() User user , @PathVariable("id") long id){
         taskid = null;
         userid = Long.toString(user.getUserId());  //TODO: Nach dem Update des Status springt die Id um 1 hoch
         allTasks = getAllTasksForSpecificRequest(id);

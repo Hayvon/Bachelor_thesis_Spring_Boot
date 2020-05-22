@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class HolidayRequest {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="ID")
     private long id;
 
@@ -18,8 +18,6 @@ public class HolidayRequest {
     private String endDate;
     @Column(name="FULLNAME")
     private String fullName;
-
-
 
     @Column(name="STATUS")
     private  String status;
