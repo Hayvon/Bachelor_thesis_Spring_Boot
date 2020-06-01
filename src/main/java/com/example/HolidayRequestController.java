@@ -96,7 +96,7 @@ public class HolidayRequestController {
 
     //Assigning holidayrequests
     @PostMapping(value = "/{id}/assign", consumes ={"application/json"},produces = {"application/json"})
-    String claimTask(@RequestBody() User newUser , @PathVariable("id") long id) throws PayloadException, NotFoundException {
+    String assignTask(@RequestBody() User newUser , @PathVariable("id") long id) throws PayloadException, NotFoundException {
 
        checkExistingHolidayRequest(id);
 
@@ -135,6 +135,7 @@ public class HolidayRequestController {
         userid = Long.toString(newUser.getUserId());
         System.out.println(newUser.getUserId());
         System.out.println(userid);
+        variables.clear();
         variables.put("approved", "true");
         allTasks = getAllTasksForSpecificRequest(id);
 
@@ -166,6 +167,7 @@ public class HolidayRequestController {
        taskAssigne = null;
        taskid = null;
        userid = Long.toString(newUser.getUserId());
+       variables.clear();
        variables.put("approved", "false");
        allTasks = getAllTasksForSpecificRequest(id);
 

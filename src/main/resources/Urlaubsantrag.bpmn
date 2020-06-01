@@ -18,7 +18,7 @@
       <bpmn:incoming>SequenceFlow_0wq9rb4</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0bmqruv</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:serviceTask id="Task_0eo272s" name="Ablehnung versenden" camunda:class="com.example.Confirmation">
+    <bpmn:serviceTask id="Task_0eo272s" name="Ablehnung versenden" camunda:class="com.example.Rejection">
       <bpmn:incoming>SequenceFlow_1ilyjuw</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0oio6zo</bpmn:outgoing>
     </bpmn:serviceTask>
