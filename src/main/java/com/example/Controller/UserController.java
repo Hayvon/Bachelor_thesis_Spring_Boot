@@ -1,6 +1,8 @@
-package com.example;
+package com.example.Controller;
 
 
+import com.example.Entity.User;
+import com.example.Repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +32,7 @@ public class UserController {
         return userList;
     }
 
-    //Returns specific User
+    //Shows specific User
     @GetMapping(path = "/{id}", produces = {"application/json"})
     User findUser(@PathVariable("id") Long id) throws NotFoundException{
         return userRepo.findById(id).orElseThrow(() -> new NotFoundException());
@@ -49,6 +51,7 @@ public class UserController {
         return "User created";
     }
 
+    //Exceptionhandling
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(NotFoundException.class)
     public void handleNotFound(){}

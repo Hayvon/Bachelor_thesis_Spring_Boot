@@ -1,4 +1,4 @@
-package com.example;
+package com.example.Entity;
 
 import javax.persistence.*;
 
@@ -35,6 +35,7 @@ public class HolidayRequest {
         this.status = "pending";
     }
 
+    //Getter & Setter
     public long getId() {
         return id;
     }

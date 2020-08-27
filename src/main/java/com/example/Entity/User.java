@@ -1,4 +1,4 @@
-package com.example;
+package com.example.Entity;
 
 import javax.persistence.*;
 
@@ -23,6 +23,8 @@ public class User {
         this.name = name;
     }
 
+
+    //Getter & Setter
     public long getUserId() {
         return userId;
     }
